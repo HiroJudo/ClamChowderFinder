@@ -23,25 +23,44 @@ browser.get("https://www.dineoncampus.com/trinity/whats-on-the-menu")
 # find_elements_by_xpath - Returns an array of selenium objects.
 #titles_element = browser.find_elements_by_xpath("//table[@class='menu-items']")
 time.sleep(5)
+
 """
 titles_element = browser.find_elements_by_tag_name("strong")
-#titles_element = browser.find_elements_by_id("__BVID__192")
-#print(len(titles_element))
-#print(titles_element[0].text)
+for menu in titles_element:
+    if menu.text != "":
+        print(menu.text)
+
+#a = browser.find_element_by_css_selector('button.clear')
+#a = browser.find_element_by_xpath('//button[@type = "button"]/span')
+a = browser.find_element_by_xpath('//input[@type = "search"]')
+a.click()
+time.sleep(5)
+b = browser.find_elements_by_xpath('//ul[@class="dropdown-menu"]/li/a')
+b[1].click()
+time.sleep(10)
+titles_element = browser.find_elements_by_tag_name("strong")
 for menu in titles_element:
     if menu.text != "":
         print(menu.text)
 """
-a = browser.find_element_by_xpath("//button[@class = 'clear']").click()
-print(a);
+
+a = browser.find_element_by_xpath('//input[@type = "search"]')
+a.click()
 time.sleep(3)
-b = browser.find_element_by_xpath('//ul[@class="dropdown-menu"]/li/a').click()
-print(b);
+b = browser.find_elements_by_xpath('//ul[@class="dropdown-menu"]/li/a')
+b[2].click()
+time.sleep(10)
+a = browser.find_elements_by_xpath('//li[@role = "presentation"]/a')
+a[1].click()
 time.sleep(3)
 titles_element = browser.find_elements_by_tag_name("strong")
-#titles_element = browser.find_elements_by_id("__BVID__192")
-#print(len(titles_element))
-#print(titles_element[0].text)
+for menu in titles_element:
+    if menu.text != "":
+        print(menu.text)
+
+a[2].click()
+time.sleep(3)
+titles_element = browser.find_elements_by_tag_name("strong")
 for menu in titles_element:
     if menu.text != "":
         print(menu.text)
